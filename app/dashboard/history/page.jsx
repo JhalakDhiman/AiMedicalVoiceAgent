@@ -1,5 +1,4 @@
 'use client'
-import Button from '@/components/common/button';
 import Image from 'next/image';
 import React, { useContext, useEffect, useState } from 'react'
 import AddNewSessionDialog from '../_components/AddNewSessionDialog';
@@ -9,7 +8,6 @@ import HistoryTable from '../_components/HistoryTable';
 const HistoryList = () => {
 
     const [historyList, setHistoryList] = useState([]);
-    const [sessionModal, setSessionModal] = useState(false);
     const { token } = useContext(AuthContext);
 
     useEffect(() => {
@@ -44,18 +42,13 @@ const HistoryList = () => {
                         <Image src='/images/medAss.jpg' alt='medical-assistance' width={150} height={150} />
                         <h2 className='font-bold text-xl mt-2'>No Recent Consultations</h2>
                         <p className='mb-3'>It looks like you haven't consulted with any doctor yet.</p>
-                        <Button text='+ Start New Consultation' clickHandler={() => {
-                            setSessionModal(true)
-                        }} />
+                        <AddNewSessionDialog />
                     </div>
                 ) : (
                     <div>
                         <HistoryTable historyList={historyList} />
                     </div>
                 )
-            }
-            {
-                sessionModal && <AddNewSessionDialog setSessionModal={setSessionModal} />
             }
         </div>
     )
