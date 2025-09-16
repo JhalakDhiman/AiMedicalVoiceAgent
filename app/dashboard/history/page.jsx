@@ -1,5 +1,5 @@
 'use client'
-import Button from '@/components/common/Button';
+import Button from '@/components/common/button';
 import Image from 'next/image';
 import React, { useContext, useEffect, useState } from 'react'
 import AddNewSessionDialog from '../_components/AddNewSessionDialog';
